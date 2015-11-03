@@ -3,6 +3,14 @@
 /* GRAB FIELDS
 =================================================*/
 $ID = get_the_ID();$title = get_the_title($ID);$featured_img = get_the_post_thumbnail();
+$data = get_field('sl_elem', $ID);
+
+/* GRAB YEARS
+=================================================*/
+for ($i=0 ; $i < sizeof($data) ; $i++){
+	$years[$i] = $data[$i]['year'];
+}
+$years = array_unique($years);$year_len = sizeof($years) -1;
 
 
 /* META TAGS
@@ -48,32 +56,58 @@ print '<div id="sl-contain" role="article">';
 
 		// STORYLINES AREA //
 		print '<div id="sl-contain">';
-			print '<div class="sl-year">2016</div>';
-			print '<div class="sl-year-contain">';
 
-				print '<div class="sl-date"><h4>April 24</h4></div>';
-				print '<aside class="sl-entry sl-content">';
-					print '<div class="meta">';
-						print '<div><img src="http://edsource.org/wp-content/uploads/2015/09/harr-circ.png"></div>';
-					print '</div>';
-					print '<div class="content">';
-						print '<h3>New vaccine will make old vaccines outdated, experts say.</h3>';
-						print '<p>In sodales facilisis cursus. Suspendisse at bibendum nunc. Nulla semper, dui sed rhoncus semper, ligula urna porttitor ligula, et dictum nisi libero dapibus arcu. Donec tempor elementum purus, facilisis interdum elit vehicula eu. Nullam consectetur sit amet quam a venenatis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum sodales scelerisque odio eget malesuada. Mauris arcu enim, maximus at eleifend ac, hendrerit ac leo. Sed gravida eget enim at mollis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consectetur consequat nulla at gravida. Etiam consectetur sem consequat dolor tempus, at dignissim nisl blandit. Nullam viverra, nunc nec convallis porttitor, lacus augue rhoncus dui, eget interdum nulla quam id mi. Vivamus vulputate tincidunt pulvinar.</p>';
-					print '</div>';
-				print '</aside>';
+			// THE YEARS //
+			for ($i = $year_len ; $i > -1 ; $i--){
+				print '<div class="sl-year">'.$years[$i].'</div>';
+				print '<div class="sl-year-contain">';
 
-				print '<div class="sl-date"><h4>April 24</h4></div>';
-				print '<aside class="sl-entry sl-content">';
-					print '<div class="meta">';
-						print '<div><img src="http://edsource.org/wp-content/uploads/2015/09/harr-circ.png"></div>';
-					print '</div>';
-					print '<div class="content">';
-						print '<h3>New vaccine will make old vaccines outdated, experts say.</h3>';
-						print '<div class="sl-lead-img"><img src="http://edsource.org/wp-content/uploads/2015/08/Santa-Ana-Classroom-1.jpg"></div>';
-						print '<p>In sodales facilisis cursus. Suspendisse at bibendum nunc. Nulla semper, dui sed rhoncus semper, ligula urna porttitor ligula, et dictum nisi libero dapibus arcu. Donec tempor elementum purus, facilisis interdum elit vehicula eu. Nullam consectetur sit amet quam a venenatis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum sodales scelerisque odio eget malesuada. Mauris arcu enim, maximus at eleifend ac, hendrerit ac leo. Sed gravida eget enim at mollis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec consectetur consequat nulla at gravida. Etiam consectetur sem consequat dolor tempus, at dignissim nisl blandit. Nullam viverra, nunc nec convallis porttitor, lacus augue rhoncus dui, eget interdum nulla quam id mi. Vivamus vulputate tincidunt pulvinar.</p>';
-					print '</div>';
-				print '</aside>';	
-		print '<div>';
+					// THE ELEMENTS //
+					for ($j=0 ; $j < sizeof($data); $j++){
+						if ($data[$j]['year'] == $years[$i]){
+							print '<div class="sl-date"><h4>'.$data[$j]['m_a_d'].'</h4></div>';
+							print '<aside class="sl-entry sl-content">';
+								print '<div class="meta">';
+
+									// META GRAPHIC //
+									switch($data[$j]['type']){
+										case 'ed_report':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-01.png';
+											break;
+										case 'ed_art':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-02.png';
+											break;
+										case 'ed_proj':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-03.png';
+											break;
+										case 'milestone':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-04.png';
+											break;
+										case 'update':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-05.png';
+											break;
+									}
+									print '<div><img src="'.$type.'"></div>';
+
+								print '</div>';
+								print '<div class="content">';
+									print '<h3>'.$data[$j]['title'].'</h3>';
+									
+									//CHECK LEAD IMG
+									if ($data[$j]['lead_art_chk'] == True){
+										print '<div class="sl-lead-img"><img src="'.$data[$j]['lead_art'].'"></div>';
+									}
+																		
+									print $data[$j]['content'];
+
+								print '</div>';
+							print '</aside>';	
+						}
+					}
+
+				print '<div>';
+			}
+
 		print '</div>';
 	print  '</section>';
 print  '</div>';
