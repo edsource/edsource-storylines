@@ -2,7 +2,7 @@
 
 /* GRAB FIELDS
 =================================================*/
-$ID = get_the_ID();$title = get_the_title($ID);$featured_img = get_the_post_thumbnail();
+$ID = get_the_ID();$title = get_the_title($ID);$featured_img = get_the_post_thumbnail();$perma = get_the_permalink($ID);
 $data = get_field('sl_elem', $ID);
 
 /* GRAB YEARS
@@ -38,7 +38,12 @@ print '<div id="sl-contain" role="article">';
 	print '<section id="sl-header">';
 		print '<div class="sl-site"><h2><a href="http://edsource.org">EdSource</a></h2></div>';
 		print '<div><h2><a href="http://edsource.org/storylines">Storylines</a></h2></div>';
-		print '<div>';print '</div>';
+		print '<div>';
+			print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'TWITTER\', \''.$title.'\');" href="https://twitter.com/share?url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&via=edsource&text=See how the '.$title.' story evolved over time. %23StoryLines"><i class="fa fa-twitter"></i></a>';
+			print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'FB\', \''.$title.'\');" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'"><i class="fa fa-facebook"></i></a>';
+			print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'LINKED\', \''.$title.'\');" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&title=Storylines: '.$title.'&summary=Follow the evolution of this story&source=EdSource"><i class="fa fa-linkedin"></i></a>';
+
+		print '</div>';
 	print '</section>';
 
 /* CONTENT TAGS
