@@ -90,32 +90,40 @@ print '<div id="sl-contain" role="article">';
 									break;
 							}
 
+							// HANDLE THE DATE //
 							if ($data[$j]['type'] === 'milestone'){
-								print '<aside class="sl-milestone">';
+								print '<div class="sl-milestone">';
 									print '<h3>'.$data[$j]['m_a_d'].', '.$data[$j]['year'].'</h3>';
 									print '<h2>'.$data[$j]['title'].'</h2>';
-								print '</aside>';
+								print '</div>';
 							}
-							else {
-								print '<div class="sl-date"><h4>'.$text.'</h4><h4>'.$data[$j]['m_a_d'].'</h4></div>';
-								print '<aside class="sl-entry sl-content">';
-									print '<div class="meta">';print '<div><img src="'.$type.'"></div>';print '</div>';
-									print '<div class="content">';
-										print '<h3>'.$data[$j]['title'].'</h3>';
-										
-										//CHECK LEAD IMG
-										if ($data[$j]['lead_art_chk'] == True){
-											print '<div class="sl-lead-img"><img src="'.$data[$j]['lead_art'].'"></div>';
-										}
-																			
-										print $data[$j]['content'];
+							else {print '<div class="sl-date"><h4>'.$text.'</h4><h4>'.$data[$j]['m_a_d'].'</h4></div>';}
+						
+							// BUILD THE ELEMENT //
+							print '<aside class="sl-entry sl-content" type="'.$data[$j]['type'].'">';
+								print '<div class="meta">';if ($data[$j]['type'] != 'milestone'){print '<div><img src="'.$type.'"></div>';}print '</div>';
+								print '<div class="content">';
+									if ($data[$j]['type'] != 'milestone'){print '<h3>'.$data[$j]['title'].'</h3>';}
 
-									print '</div>';
-								print '</aside>';	
-							}							
+									// CHECK TOP EMBED //
+									if ($data[$j]['bce']){print $data[$j]['bce'];}
+
+									// CHECK LEAD IMG //
+									if ($data[$j]['lead_art_chk'] == True){print '<div class="sl-lead-img"><img src="'.$data[$j]['lead_art'].'"></div>';}
+									
+									// CHECK CONTENT //	
+									print $data[$j]['content'];
+
+									// CHECK BOTTOM EMBED //
+									if ($data[$j]['ace']){print $data[$j]['ace'];}
+
+									// CHECK LINK //
+									if ($data[$j]['url']){print '<div class="sl-link"><h4><a href="'.$data[$j]['url'].'">Read More</a></h4></div>';}
+
+								print '</div>';
+							print '</aside>';							
 						}
 					}	
-
 				print '<div>';
 			}
 

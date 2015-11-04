@@ -16,6 +16,7 @@ body, html {margin:0;padding:0;width:100%;}
 .sl-milestone {background: rgba(255, 126, 126, 0.7);width: 100%;padding: 2em 0;margin: 0 0 3em 0;}
 	.sl-milestone h2 {}
 	.sl-milestone h3 {text-align:center;}
+.sl-link {text-align:center;text-transform: uppercase;}
 
 
 /* HEADER STYLE */
@@ -56,12 +57,19 @@ body, html {margin:0;padding:0;width:100%;}
 
 /* ENTRY STYLE */
 .sl-entry {width: 90%;margin: 2em 5%;overflow:hidden;padding-bottom: 4em;}
-	.sl-entry .meta {display:none;}
+	.sl-entry .meta {display:none;min-height:60px;}
 		.sl-entry .meta img {max-width: 60px;}
 	.sl-entry .content {margin:0 auto;width:96%;}
 		.sl-entry .content p {font-size: 1.1em;}
 		.sl-entry .content h3 {margin: 0 0 3em 0;}
 .sl-year-contain>.sl-entry:last-of-type {border:none;}
+
+/* TYPE DEPENDENT STYLE */
+#sl-body .sl-entry[type="milestone"] .sl-link a {color:#BA8585;}
+#sl-body .sl-entry[type="ed_art"] .sl-link a {color:#C184AE;}
+#sl-body .sl-entry[type="ed_report"] .sl-link a {color:#83C392;}
+#sl-body .sl-entry[type="ed_proj"] .sl-link a {color:#84BCBC;}
+#sl-body .sl-entry[type="update"] .sl-link a {color:#B5B784;}
 
 
 /* FOOTER STYLE */
