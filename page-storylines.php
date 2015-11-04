@@ -7,10 +7,10 @@ $data = get_field('sl_elem', $ID);
 
 /* GRAB YEARS
 =================================================*/
-for ($i=0 ; $i < sizeof($data) ; $i++){
-	$years[$i] = $data[$i]['year'];
-}
-$years = array_unique($years);$year_len = sizeof($years) -1;
+for ($i=0 ; $i < sizeof($data) ; $i++){$y[$i] = $data[$i]['year'];}
+$y = array_unique($y);$j = 0;
+for ($i=0 ; $i < sizeof($data) ; $i++){if(!empty($y[$i])){$years[$j] = $y[$i];$j += 1;}}
+$year_len = sizeof($years) -1;
 
 
 /* META TAGS
@@ -62,48 +62,59 @@ print '<div id="sl-contain" role="article">';
 				print '<div class="sl-year">'.$years[$i].'</div>';
 				print '<div class="sl-year-contain">';
 
-					// THE ELEMENTS //
+					// THE ELEMENTS //	
 					for ($j=0 ; $j < sizeof($data); $j++){
 						if ($data[$j]['year'] == $years[$i]){
-							print '<div class="sl-date"><h4>'.$data[$j]['m_a_d'].'</h4></div>';
-							print '<aside class="sl-entry sl-content">';
-								print '<div class="meta">';
 
-									// META GRAPHIC //
-									switch($data[$j]['type']){
-										case 'ed_report':
-											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-01.png';
-											break;
-										case 'ed_art':
-											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-02.png';
-											break;
-										case 'ed_proj':
-											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-03.png';
-											break;
-										case 'milestone':
-											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-04.png';
-											break;
-										case 'update':
-											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-05.png';
-											break;
-									}
-									print '<div><img src="'.$type.'"></div>';
+							// TYPE OF ELEMENT //
+							switch($data[$j]['type']){
+								case 'ed_report':
+									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-01.png';
+									$text = 'Publication';
+									break;
+								case 'ed_art':
+									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-02.png';
+									$text = 'Article';
+									break;
+								case 'ed_proj':
+									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-03.png';
+									$text = 'Multimedia';
+									break;
+								case 'milestone':
+									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-04.png';
+									$text = 'Milestone';
+									break;
+								case 'update':
+									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-05.png';
+									$text = 'Update';
+									break;
+							}
 
-								print '</div>';
-								print '<div class="content">';
-									print '<h3>'.$data[$j]['title'].'</h3>';
-									
-									//CHECK LEAD IMG
-									if ($data[$j]['lead_art_chk'] == True){
-										print '<div class="sl-lead-img"><img src="'.$data[$j]['lead_art'].'"></div>';
-									}
-																		
-									print $data[$j]['content'];
+							if ($data[$j]['type'] === 'milestone'){
+								print '<aside class="sl-milestone">';
+									print '<h3>'.$data[$j]['m_a_d'].', '.$data[$j]['year'].'</h3>';
+									print '<h2>'.$data[$j]['title'].'</h2>';
+								print '</aside>';
+							}
+							else {
+								print '<div class="sl-date"><h4>'.$text.'</h4><h4>'.$data[$j]['m_a_d'].'</h4></div>';
+								print '<aside class="sl-entry sl-content">';
+									print '<div class="meta">';print '<div><img src="'.$type.'"></div>';print '</div>';
+									print '<div class="content">';
+										print '<h3>'.$data[$j]['title'].'</h3>';
+										
+										//CHECK LEAD IMG
+										if ($data[$j]['lead_art_chk'] == True){
+											print '<div class="sl-lead-img"><img src="'.$data[$j]['lead_art'].'"></div>';
+										}
+																			
+										print $data[$j]['content'];
 
-								print '</div>';
-							print '</aside>';	
+									print '</div>';
+								print '</aside>';	
+							}							
 						}
-					}
+					}	
 
 				print '<div>';
 			}

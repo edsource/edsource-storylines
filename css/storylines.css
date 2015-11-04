@@ -11,7 +11,12 @@ body, html {margin:0;padding:0;width:100%;}
 .sl-content {width:70%;margin:2em auto;}
 .sl-year {width: 100%;text-align: center;padding: 5px 0;background: #83C392;color: #333;font-weight: 700;margin: 0 0 6em 0;}
 .sl-date {border-bottom: 1px #ddd solid;width: 90%;margin: 0 5%;}
-	.sl-date h4 {text-align: right;font-size: .8em;position: relative;top: 25px; right: 0px;text-transform: uppercase;color: #666;}
+	.sl-date h4 {text-align: left;font-size: .8em;position: relative;top: 52px;text-transform: uppercase;color: #666;}
+	.sl-date h4:last-of-type {text-align: right;top:25px;}
+.sl-milestone {background: rgba(255, 126, 126, 0.7);width: 100%;padding: 2em 0;margin: 0 0 3em 0;}
+	.sl-milestone h2 {}
+	.sl-milestone h3 {text-align:center;}
+
 
 /* HEADER STYLE */
 #sl-header {width:100%;background:#333;height:8%;margin: 0;padding:0;position:fixed;z-index:100;}
@@ -51,9 +56,9 @@ body, html {margin:0;padding:0;width:100%;}
 
 /* ENTRY STYLE */
 .sl-entry {width: 90%;margin: 2em 5%;overflow:hidden;padding-bottom: 4em;}
-	.sl-entry .meta {float:left;width:11%;}
-		.sl-entry .meta img {margin: 0 auto;max-width: 60px;}
-	.sl-entry .content {float:left;width:78%;}
+	.sl-entry .meta {display:none;}
+		.sl-entry .meta img {max-width: 60px;}
+	.sl-entry .content {margin:0 auto;width:96%;}
 		.sl-entry .content p {font-size: 1.1em;}
 		.sl-entry .content h3 {margin: 0 0 3em 0;}
 .sl-year-contain>.sl-entry:last-of-type {border:none;}
@@ -76,6 +81,9 @@ body, html {margin:0;padding:0;width:100%;}
 	#sl-header {height:50px;}
 		#sl-header>div:nth-of-type(2) {float:left;}
 		#sl-header h2 {margin: 9px 20px;}
+
+	.sl-entry .meta {float:left;width:11%;display:block;}
+	.sl-entry .content {float:left;width:78%;}
 
 }
 
