@@ -74,7 +74,7 @@ print '<div id="sl-contain" role="article">';
 				print '<div class="sl-year-contain">';
 
 					// THE ELEMENTS //	
-					for ($j=0 ; $j < sizeof($data); $j++){
+					for ($j= (sizeof($data) -1) ; $j > -1 ; $j--){
 						if ($data[$j]['year'] == $years[$i]){
 
 							// TYPE OF ELEMENT //
