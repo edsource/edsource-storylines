@@ -1,9 +1,10 @@
 <?php 	//	Template Name: Storylines
 
+	
 /* GRAB FIELDS
 =================================================*/
 $ID = get_the_ID();$title = get_the_title($ID);$featured_img = get_the_post_thumbnail();$perma = get_the_permalink($ID);
-$data = get_field('sl_elem', $ID);
+$data = get_field('sl_elem', $ID);$img_cap = get_field('img_cap', $id);
 
 /* GRAB YEARS
 =================================================*/
@@ -38,6 +39,11 @@ print '<div id="sl-contain" role="article">';
 	print '<section id="sl-header">';
 		print '<div class="sl-site"><h2><a href="http://edsource.org">EdSource</a></h2></div>';
 		print '<div><h2><a href="http://edsource.org/storylines">Storylines</a></h2></div>';
+		
+        // PROGRESS BAR //
+		print '<div class="sl-progress">';
+			print '<div><div></div></div>';
+		print '</div>';
 		print '<div>';
 			print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'TWITTER\', \''.$title.'\');" href="https://twitter.com/share?url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&via=edsource&text=See how the '.$title.' story evolved over time. %23StoryLines"><i class="fa fa-twitter"></i></a>';
 			print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'FB\', \''.$title.'\');" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'"><i class="fa fa-facebook"></i></a>';
@@ -51,7 +57,7 @@ print '<div id="sl-contain" role="article">';
 	print '<section id="sl-body">';
 
 		// check for featured img and add //
-		if ($featured_img){print '<div class="sl-full-img">'.$featured_img.'</div>';}
+		if ($featured_img){print '<div class="sl-full-img">'.$featured_img.'</div>';print '<div class="sl-full-cap"><p>'.$img_cap.'</p></div>';}
 
 		// INTRO AREA //
 		print '<div id="sl-intro" class="sl-content">';
@@ -134,6 +140,20 @@ print '<div id="sl-contain" role="article">';
 
 		print '</div>';
 	print  '</section>';
+	print '<section id="sl-footer">';
+		print '<p>©2015 EdSource. All Rights Reserved</p>'
+		?>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-3051201-4', 'edsource.org');
+			ga('send', 'pageview');
+			
+		</script><?php 
+	print '</section>';
 print  '</div>';
 
 ?>
