@@ -1,4 +1,5 @@
 window.onload = function(){
+	
 	/* CRUNCH NUMBERS FOR PROGRESS BAR
 	======================================*/
 	var actHeight = jQuery(window).height() - window.innerHeight;
