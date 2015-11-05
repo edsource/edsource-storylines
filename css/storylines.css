@@ -16,7 +16,7 @@ body, html {margin:0;padding:0;width:100%;}
 .sl-milestone {background: rgba(255, 126, 126, 0.7);width: 100%;padding: 2em 0;margin: 0 0 3em 0;}
 	.sl-milestone h2 {}
 	.sl-milestone h3 {text-align:center;}
-.sl-link {text-align:center;text-transform: uppercase;}
+.sl-link {text-align:center;text-transform: uppercase;margin-top: 2em;}
 
 
 /* HEADER STYLE */
@@ -60,7 +60,7 @@ body, html {margin:0;padding:0;width:100%;}
 .sl-full-cap {}
 	.sl-full-cap p {text-align: right;margin-right: 1%;font-size: .8em;}
 .sl-lead-img {}
-	.sl-lead-img img {width:100%;height:auto;}
+	.sl-lead-img img {width:100%;height:auto;border: 1px #ddd solid;}
 
 /* ENTRY STYLE */
 .sl-entry {width: 90%;margin: 2em 5%;overflow:hidden;padding-bottom: 4em;}
