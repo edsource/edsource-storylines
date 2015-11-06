@@ -112,7 +112,15 @@ print '<div id="sl-contain" role="article">';
 						
 							// BUILD THE ELEMENT //
 							print '<aside class="sl-entry sl-content" type="'.$data[$j]['type'].'">';
-								print '<div class="meta">';if ($data[$j]['type'] != 'milestone'){print '<div><img src="'.$type.'"></div>';}print '</div>';
+								print '<div class="meta">';
+									if ($data[$j]['type'] != 'milestone'){
+										print '<div>';
+											if ($data[$j]['url']){print '<a href="'.$data[$j]['url'].'">';}
+											print '<img src="'.$type.'">';
+											if ($data[$j]['url']){print '</a>';}
+										print '</div>';
+									}
+								print '</div>';
 								print '<div class="content">';
 									if ($data[$j]['type'] != 'milestone'){print '<h3>'.$data[$j]['title'].'</h3>';}
 
