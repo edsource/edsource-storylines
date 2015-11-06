@@ -45,9 +45,16 @@ print '<div id="sl-contain" role="article">';
 			print '<div><div></div></div>';
 		print '</div>';
 		print '<div>';
-			print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'TWITTER\', \''.$title.'\');" href="https://twitter.com/share?url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&via=edsource&text=See how the '.$title.' story evolved over time. %23StoryLines"><i class="fa fa-twitter"></i></a>';
-			print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'FB\', \''.$title.'\');" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'"><i class="fa fa-facebook"></i></a>';
-			print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'LINKED\', \''.$title.'\');" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&title=Storylines: '.$title.'&summary=Follow the evolution of this story&source=EdSource"><i class="fa fa-linkedin"></i></a>';
+			if ($ID == 89893){
+				print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'TWITTER\', \''.$title.'\');" href="https://twitter.com/share?url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&via=edsource&text=Check out %23Storylines: Following the evolution of stories over time."><i class="fa fa-twitter"></i></a>';
+				print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'FB\', \''.$title.'\');" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'"><i class="fa fa-facebook"></i></a>';
+				print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'LINKED\', \''.$title.'\');" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&title=Storylines: '.$title.'&summary=Follow the evolution of stories over time&source=EdSource"><i class="fa fa-linkedin"></i></a>';
+			}
+			else {
+				print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'TWITTER\', \''.$title.'\');" href="https://twitter.com/share?url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&via=edsource&text=See how the '.$title.' story evolved over time. %23StoryLines"><i class="fa fa-twitter"></i></a>';
+				print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'FB\', \''.$title.'\');" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'"><i class="fa fa-facebook"></i></a>';
+				print '<a onclick="ga(\'send\',\'event\', \'STORYLINES\', \'LINKED\', \''.$title.'\');" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fedsource.org%2F%3Fpage_id='.$ID.'&title=Storylines: '.$title.'&summary=Follow the evolution of this story&source=EdSource"><i class="fa fa-linkedin"></i></a>';
+			}
 
 		print '</div>';
 	print '</section>';
@@ -65,88 +72,106 @@ print '<div id="sl-contain" role="article">';
 			if(have_posts()) { while(have_posts()) { the_post();the_content();}}
 		print '</div>';
 
-		// STORYLINES AREA //
 		print '<div id="sl-contain">';
 
-			// THE YEARS //
-			for ($i = $year_len ; $i > -1 ; $i--){
-				print '<div class="sl-year">'.$years[$i].'</div>';
-				print '<div class="sl-year-contain">';
+			// LANDING PAGE OR STORYLINE? //
+			if ($ID == 89893){
 
-					// THE ELEMENTS //	
-					for ($j= (sizeof($data) -1) ; $j > -1 ; $j--){
-						if ($data[$j]['year'] == $years[$i]){
+				// GRAB CHILDREN
+				$query = new WP_Query();
+				$args = $query->query(array('post_type' => 'page', 'post_status'=>'draft'));
+				$children = get_page_children(89893, $args);
 
-							// TYPE OF ELEMENT //
-							switch($data[$j]['type']){
-								case 'ed_report':
-									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-01.png';
-									$text = 'Publication';
-									break;
-								case 'ed_art':
-									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-02.png';
-									$text = 'Article';
-									break;
-								case 'ed_proj':
-									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-03.png';
-									$text = 'Multimedia';
-									break;
-								case 'milestone':
-									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-04.png';
-									$text = 'Milestone';
-									break;
-								case 'update':
-									$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-05.png';
-									$text = 'Update';
-									break;
-							}
+				var_dump($children);
+			}
+			else {
+				// STORYLINES AREA //
 
-							// HANDLE THE DATE //
-							if ($data[$j]['type'] === 'milestone'){
-								print '<div class="sl-milestone">';
-									print '<h3>'.$data[$j]['m_a_d'].', '.$data[$j]['year'].'</h3>';
-									print '<h2>'.$data[$j]['title'].'</h2>';
-								print '</div>';
-							}
-							else {print '<div class="sl-date"><h4>'.$text.'</h4><h4>'.$data[$j]['m_a_d'].'</h4></div>';}
-						
-							// BUILD THE ELEMENT //
-							print '<aside class="sl-entry sl-content" type="'.$data[$j]['type'].'">';
-								print '<div class="meta">';
-									if ($data[$j]['type'] != 'milestone'){
-										print '<div>';
-											if ($data[$j]['url']){print '<a href="'.$data[$j]['url'].'">';}
-											print '<img src="'.$type.'">';
-											if ($data[$j]['url']){print '</a>';}
+					// THE YEARS //
+					for ($i = $year_len ; $i > -1 ; $i--){
+						print '<div class="sl-year">'.$years[$i].'</div>';
+						print '<div class="sl-year-contain">';
+
+							// THE ELEMENTS //	
+							for ($j= (sizeof($data) -1) ; $j > -1 ; $j--){
+								if ($data[$j]['year'] == $years[$i]){
+
+									// TYPE OF ELEMENT //
+									switch($data[$j]['type']){
+										case 'ed_report':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-01.png';
+											$text = 'Publication';
+											break;
+										case 'ed_art':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-02.png';
+											$text = 'Article';
+											break;
+										case 'ed_proj':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-03.png';
+											$text = 'Multimedia';
+											break;
+										case 'milestone':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-04.png';
+											$text = 'Milestone';
+											break;
+										case 'update':
+											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-05.png';
+											$text = 'Update';
+											break;
+									}
+
+									// HANDLE THE DATE //
+									if ($data[$j]['type'] === 'milestone'){
+										print '<div class="sl-milestone">';
+											print '<h3>'.$data[$j]['m_a_d'].', '.$data[$j]['year'].'</h3>';
+											print '<h2>'.$data[$j]['title'].'</h2>';
 										print '</div>';
 									}
-								print '</div>';
-								print '<div class="content">';
-									if ($data[$j]['type'] != 'milestone'){print '<h3>'.$data[$j]['title'].'</h3>';}
+									else {print '<div class="sl-date"><h4>'.$text.'</h4><h4>'.$data[$j]['m_a_d'].'</h4></div>';}
+								
+									// BUILD THE ELEMENT //
+									print '<aside class="sl-entry sl-content" type="'.$data[$j]['type'].'">';
+										print '<div class="meta">';
+											if ($data[$j]['type'] != 'milestone'){
+												print '<div>';
+													if ($data[$j]['url']){print '<a href="'.$data[$j]['url'].'">';}
+													print '<img src="'.$type.'">';
+													if ($data[$j]['url']){print '</a>';}
+												print '</div>';
+											}
+										print '</div>';
+										print '<div class="content">';
+											if ($data[$j]['type'] != 'milestone'){print '<h3>'.$data[$j]['title'].'</h3>';}
 
-									// CHECK TOP EMBED //
-									if ($data[$j]['bce']){print $data[$j]['bce'];}
+											// CHECK TOP EMBED //
+											if ($data[$j]['bce']){print $data[$j]['bce'];}
 
-									// CHECK LEAD IMG //
-									if ($data[$j]['lead_art_chk'] == True){print '<div class="sl-lead-img"><img src="'.$data[$j]['lead_art'].'"></div>';}
-									
-									// CHECK CONTENT //	
-									print $data[$j]['content'];
+											// CHECK LEAD IMG //
+											if ($data[$j]['lead_art_chk'] == True){print '<div class="sl-lead-img"><img src="'.$data[$j]['lead_art'].'"></div>';}
+											
+											// CHECK CONTENT //	
+											print $data[$j]['content'];
 
-									// CHECK BOTTOM EMBED //
-									if ($data[$j]['ace']){print $data[$j]['ace'];}
+											// CHECK BOTTOM EMBED //
+											if ($data[$j]['ace']){print $data[$j]['ace'];}
 
-									// CHECK LINK //
-									if ($data[$j]['url']){print '<div class="sl-link"><h4><a href="'.$data[$j]['url'].'">Read More</a></h4></div>';}
+											// CHECK LINK //
+											if ($data[$j]['url']){print '<div class="sl-link"><h4><a href="'.$data[$j]['url'].'">Read More</a></h4></div>';}
 
-								print '</div>';
-							print '</aside>';							
-						}
-					}	
-				print '<div>';
+										print '</div>';
+									print '</aside>';							
+								}
+							}	
+						print '<div>';
+					}
+
+				print '</div>';
 			}
 
 		print '</div>';
+
+
+		
 	print  '</section>';
 	print '<section id="sl-footer">';
 		print '<p>©2015 EdSource. All Rights Reserved</p>'
