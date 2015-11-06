@@ -73,16 +73,34 @@ print '<div id="sl-contain" role="article">';
 		print '</div>';
 
 		print '<div id="sl-contain">';
-
+			
 			// LANDING PAGE OR STORYLINE? //
 			if ($ID == 89893){
 
 				// GRAB CHILDREN
 				$query = new WP_Query();
-				$args = $query->query(array('post_type' => 'page', 'post_status'=>'draft'));
+				$args = $query->query(array('post_type' => 'page', 'post_status'=>'draft', 'order'=>'DESC'));
 				$children = get_page_children(89893, $args);
 
-				var_dump($children);
+				//var_dump($children);
+
+				// POPULATE CHILDREN //
+				for ($i=0 ; $i < sizeof($children) ; $i++){
+
+					// GET MODIFIED DATE //
+					$format = '%B %e, %Y';
+					$img = get_the_post_thumbnail($children[$i]->ID);
+					$date = $children[$i]->post_modified;$date = explode(" ", $date);$date = strtotime($date[0]);$date = strftime($format, $date);
+
+					print '<aside class="sl-storyline">';
+						print '<div>'.$img.'</div>';
+						print '<div>';
+							print '<h2>'.$children[$i]->post_title.'</h2>';
+							print '<p>Updated '.$date.'</p>';
+							print '<p>'.$children[$i]->post_excerpt.'</p>';
+						print '</div>';
+					print '</aside>';
+				}
 			}
 			else {
 				// STORYLINES AREA //

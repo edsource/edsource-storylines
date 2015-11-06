@@ -8,7 +8,7 @@ body, html {margin:0;padding:0;width:100%;}
 #sl-contain {overflow:hidden;width:100%;}
 
 /* SPECIAL CLASSES */
-.sl-content {width:70%;margin:2em auto;}
+.sl-content {width:90%;margin:2em auto;}
 .sl-year {width: 100%;text-align: center;padding: 5px 0;background: #83C392;color: #333;font-weight: 700;margin: 0 0 6em 0;}
 .sl-date {border-bottom: 1px #ddd solid;width: 90%;margin: 0 5%;}
 	.sl-date h4 {text-align: left;font-size: .8em;position: relative;top: 52px;text-transform: uppercase;color: #666;}
@@ -81,6 +81,18 @@ body, html {margin:0;padding:0;width:100%;}
 #sl-body .sl-entry[type="ed_proj"] .sl-link a, #sl-body .sl-entry[type="ed_proj"] blockquote a {color:#84BCBC;}
 #sl-body .sl-entry[type="update"] .sl-link a, #sl-body .sl-entry[type="update"] blockquote a {color:#B5B784;}
 
+/* LANDING PAGE STYLE */
+.sl-storyline {width:90%;margin:1em auto;padding:2em 0;border-bottom: 1px solid #aaa;}
+	.sl-storyline>div:first-of-type {}
+		.sl-storyline img {width:100%;height:auto;}
+	.sl-storyline>div:last-of-type {margin: 2em 0 0 0;}
+		.sl-storyline>div:last-of-type h2 {}
+		.sl-storyline>div:last-of-type p:first-of-type {font-style: italic;text-align: center;margin: 0;}
+		.sl-storyline>div:last-of-type p:last-of-type {}
+
+
+
+
 /* FOOTER STYLE */
 #sl-footer {background: #333;margin: 0;padding: 0;height: 25px;}
 	#sl-footer p {text-align: center;font-size: .9em;color: #fff;}
@@ -109,5 +121,6 @@ body, html {margin:0;padding:0;width:100%;}
 
 @media screen and (min-width:1280px){
 	.sl-entry {width:60%;margin:2em 20%;}
-	#sl-intro {width:50%;}
+	.sl-content {width:70%;}
+	#sl-intro, .sl-storyline {width:50%;}
 }
