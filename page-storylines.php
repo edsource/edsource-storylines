@@ -16,21 +16,9 @@ $year_len = sizeof($years) -1;
 
 /* META TAGS
 =================================================*/
-print '<meta charset="utf-8"><title> '.$title.' | EdSource</title></meta>';
-print '<meta name="description" content="A non-profit journalism website reporting on key education issues in California and beyond."></meta>';
-print '<meta name="tags" content="education news, california education, non-profit news, common core, local control funding formula, k-12 education"></meta> ';
-print '<meta name="HandheldFriendly" content="true" />';
-print '<meta name="MobileOptimized" content="320" />';
-print '<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no" />';
+print slick_head($title);
 
-print '<link rel="shortcut icon" href="http://edsource.org/wp-content/themes/nakatomi/styles/graphics/favicon.png">';
-print '<link href=\'http://fonts.googleapis.com/css?family=Montserrat:400,700\' rel=\'stylesheet\' type=\'text/css\'>';
-print '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
-print '<link href=\'http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700\' rel=\'stylesheet\' type=\'text/css\'>';
-print '<link rel=\'stylesheet\' id=\'default_css-css\'  href=\'http://edsource.org/wp-content/themes/nakatomi/style.css\' type=\'text/css\' media=\'all\' />';
 print '<link rel="stylesheet" type="text/css" href="http://edsource.org/wp-content/themes/nakatomi/styles/storylines.css">';
-
-print '<script type=\'text/javascript\' src=\'http://edsource.org/wp-includes/js/jquery/jquery.js\'></script>';
 print '<script type=\'text/javascript\' src=\'http://edsource.org/wp-content/themes/nakatomi/scripts/storylines.js\'></script>';
 
 /* HEADER TAGS
@@ -95,7 +83,7 @@ print '<div id="sl-contain" role="article">';
 					print '<aside class="sl-storyline">';
 						print '<div>'.$img.'</div>';
 						print '<div>';
-							print '<h2>'.$children[$i]->post_title.'</h2>';
+							print '<a href=""><h2>'.$children[$i]->post_title.'</h2></a>';
 							print '<p>Updated '.$date.'</p>';
 							print '<p>'.$children[$i]->post_excerpt.'</p>';
 						print '</div>';
