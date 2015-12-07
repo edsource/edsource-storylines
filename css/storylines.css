@@ -14,13 +14,12 @@
 ===========================================*/
 #slick-header>div:nth-of-type(2) a {color:#83C392;}
 #slick-header>div:nth-of-type(2) a:hover {color:#618A6B;}
+#slick-header .slick-social-hed {top:-50px;}
 
 /* BODY STYLE 
 ===========================================*/
 #slick-body {width:100%;}
 	#slick-body a {color:#4B9A5D;}
-#sl-intro {margin-bottom:6em;}
-	#sl-intro p, #sl-intro li, #sl-intro span {font-size:1.2em;line-height:1.8em;}
 
 /* BLOCKQUOTE STYLE 
 ===========================================*/
@@ -67,17 +66,17 @@
 ===========================================*/
 
 @media screen and (min-width:768px){
-	.sl-entry .meta {float:left;width:11%;display:block;}
-	.sl-entry .content {float:left;width:78%;}
+	.sl-entry .meta {display:none;}
+	.sl-entry .content {width:100%;}
 }
 
 @media screen and (min-width:1028px){
-	.sl-lead-img img {width:70%;margin:0 auto;height:auto;}
+	.sl-lead-img img {width:70%;margin:20px auto;height:auto;}
 }
 
 @media screen and (min-width:1280px){
 	.sl-entry {width:60%;margin:2em 20%;}
-	.sl-content {width:70%;}
+	.sl-content {width:60%;}
 	.sl-date {width: 60%;}
 	#sl-intro, .sl-storyline {width:50%;}
 }
