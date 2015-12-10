@@ -33,7 +33,7 @@ print slick_header('Storylines', $ID);
 		if ($featured_img){print '<div class="sl-full-img">'.$featured_img.'</div>';print '<div class="sl-full-cap"><p>'.$img_cap.'</p></div>';}
 
 		// INTRO AREA //
-		print '<div id="sl-intro" class="sl-content">';
+		print '<div id="slick-intro">';
 			print '<h2>'.$title.'</h2>';
 			if(have_posts()) { while(have_posts()) { the_post();the_content();}}
 		print '</div>';
@@ -55,13 +55,15 @@ print slick_header('Storylines', $ID);
 
 					// GET MODIFIED DATE //
 					$format = '%B %e, %Y';
-					$img = get_the_post_thumbnail($children[$i]->ID);
 					$date = $children[$i]->post_modified;$date = explode(" ", $date);$date = strtotime($date[0]);$date = strftime($format, $date);
+
+					$img = get_the_post_thumbnail($children[$i]->ID);
+
 
 					print '<aside class="sl-storyline">';
 						print '<div>'.$img.'</div>';
 						print '<div>';
-							print '<a href=""><h2>'.$children[$i]->post_title.'</h2></a>';
+							print '<a href="'.$children[$i]->guid.'"><h2>'.$children[$i]->post_title.'</h2></a>';
 							print '<p>Updated '.$date.'</p>';
 							print '<p>'.$children[$i]->post_excerpt.'</p>';
 						print '</div>';
@@ -131,7 +133,7 @@ print slick_header('Storylines', $ID);
 											if ($data[$j]['bce']){print $data[$j]['bce'];}
 
 											// CHECK LEAD IMG //
-											if ($data[$j]['lead_art_chk'] == True){print '<div class="sl-lead-img"><img src="'.$data[$j]['lead_art'].'"></div>';}
+											if ($data[$j]['lead_art_chk'] == True){print '<div class="sl-lead-img"><a target="_blank" href="'.$data[$j]['url'].'"><img src="'.$data[$j]['lead_art'].'"></a></div>';}
 											
 											// CHECK CONTENT //	
 											print $data[$j]['content'];
@@ -140,7 +142,7 @@ print slick_header('Storylines', $ID);
 											if ($data[$j]['ace']){print $data[$j]['ace'];}
 
 											// CHECK LINK //
-											if ($data[$j]['url']){print '<div class="sl-link"><h4><a href="'.$data[$j]['url'].'">Read More</a></h4></div>';}
+											if ($data[$j]['url']){print '<div class="sl-link"><h4><a target="_blank" href="'.$data[$j]['url'].'">Read More</a></h4></div>';}
 
 										print '</div>';
 									print '</aside>';							

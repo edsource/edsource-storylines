@@ -1,7 +1,7 @@
 /* SPECIAL CLASSES 
 ===========================================*/
 .sl-content {width:90%;margin:2em auto;}
-.sl-year {width: 100%;text-align: center;padding: 5px 0;background: #83C392;color: #333;font-weight: 700;margin: 0 0 6em 0;}
+.sl-year {  width: 70%;text-align: center;padding: 5px 0;color: #83C392;font-weight: 700;margin: 0 auto 1em auto;font-size: 3em;border-bottom: 4px solid #83C392;}
 .sl-date {border-bottom: 1px #ddd solid;width: 90%;margin: 0 auto;}
 	.sl-date h4 {text-align: left;font-size: .8em;position: relative;top: 52px;text-transform: uppercase;color: #666;}
 	.sl-date h4:last-of-type {text-align: right;top:25px;}
