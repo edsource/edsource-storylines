@@ -104,6 +104,10 @@ print slick_header('Storylines', $ID);
 											$type = 'http://edsource.org/wp-content/uploads/2015/11/storylines-icons-05.png';
 											$text = 'Update';
 											break;
+										case 'commentary':
+											$type = '';
+											$text = 'Commentary';
+											break;
 									}
 
 									// HANDLE THE DATE //

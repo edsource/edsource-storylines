@@ -20,10 +20,12 @@
 ===========================================*/
 #slick-body {width:100%;}
 	#slick-body a {color:#4B9A5D;}
+	#slick-body h3 {font-size:1.5rem;font-weight:700;}
+
 
 /* BLOCKQUOTE STYLE 
 ===========================================*/
-.sl-entry .content blockquote {border-top: .2em #302e2b solid;}
+.sl-entry .content blockquote {width: 100%;float: none;margin: 2em 0;border-color: #555;color: #555;font-weight: 400;font-family: "crimson text";padding: 1em 0;}
 #slick-contain .sl-entry .content blockquote p {font-size: .9em;text-align: right;font-family:"Roboto Condensed",sans-serif;margin-top: 10px;}
 
 /* IMAGE STYLE 
@@ -37,24 +39,24 @@
 
 /* ENTRY STYLE 
 ===========================================*/
-.sl-entry {width: 90%;margin: 2em 5%;overflow:hidden;padding-bottom: 4em;}
+.sl-entry {width: 50%;margin: 2em 25%;overflow:hidden;padding-bottom: 4em;}
 	.sl-entry .meta {display:none;min-height:60px;}
 		.sl-entry .meta img {max-width: 60px;}
-	.sl-entry .content {margin:0 auto;width:96%;}
+	.sl-entry .content {margin:2em auto 0 auto;width:96%;}
 		.sl-entry .content h3 {margin: 0 0 3em 0;}
 .sl-year-contain>.sl-entry:last-of-type {border:none;}
 
 /* TYPE DEPENDENT STYLE 
 ===========================================*/
 #slick-body .sl-entry[type="milestone"] .sl-link a, #slick-body .sl-entry[type="milestone"] blockquote a  {color:#BA8585;}
-#slick-body .sl-entry[type="ed_art"] .sl-link a, #slick-body .sl-entry[type="ed_art"] blockquote a {color:#C184AE;}
+/*#slick-body .sl-entry[type="ed_art"] .sl-link a, #slick-body .sl-entry[type="ed_art"] blockquote a {color:#C184AE;}
 #slick-body .sl-entry[type="ed_report"] .sl-link a, #slick-body .sl-entry[type="ed_report"] blockquote a {color:#83C392;}
 #slick-body .sl-entry[type="ed_proj"] .sl-link a, #slick-body .sl-entry[type="ed_proj"] blockquote a {color:#84BCBC;}
-#slick-body .sl-entry[type="update"] .sl-link a, #slick-body .sl-entry[type="update"] blockquote a {color:#B5B784;}
+#slick-body .sl-entry[type="update"] .sl-link a, #slick-body .sl-entry[type="update"] blockquote a {color:#B5B784;}*/
 
 /* LANDING PAGE STYLE 
 ===========================================*/
-.sl-storyline {width:90%;margin:1em auto;padding:2em 0;border-bottom: 1px solid #aaa;}
+.sl-storyline {width:50%;margin:1em auto;padding:2em 0;border-bottom: 1px solid #aaa;}
 	.sl-storyline>div:first-of-type {}
 		.sl-storyline img {width:100%;height:auto;}
 	.sl-storyline>div:last-of-type {margin: 2em 0 0 0;}
@@ -72,11 +74,10 @@
 
 @media screen and (min-width:1028px){
 	.sl-lead-img img {width:70%;margin:20px auto;height:auto;}
+	#slick-intro, .sl-storyline, .sl-content {width:50%;}
+
 }
 
 @media screen and (min-width:1280px){
-	.sl-entry {width:60%;margin:2em 20%;}
-	.sl-content {width:60%;}
 	.sl-date {width: 60%;}
-	#sl-intro, .sl-storyline {width:50%;}
 }
