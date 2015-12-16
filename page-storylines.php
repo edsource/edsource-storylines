@@ -117,7 +117,7 @@ print slick_header('Storylines', $ID);
 											print '<h2>'.$data[$j]['title'].'</h2>';
 										print '</div>';
 									}
-									else {print '<div class="sl-date"><h4>'.$text.'</h4><h4>'.$data[$j]['m_a_d'].'</h4></div>';}
+									else {print '<div class="sl-date"><h4>'.$text.'</h4><h4>'.$data[$j]['m_a_d'].', '.$data[$j]['year'].'</h4></div>';}
 								
 									// BUILD THE ELEMENT //
 									print '<aside class="sl-entry sl-content" type="'.$data[$j]['type'].'">';

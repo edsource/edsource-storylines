@@ -21,12 +21,13 @@
 #slick-body {width:100%;}
 	#slick-body a {color:#4B9A5D;}
 	#slick-body h3 {font-size:1.5rem;font-weight:700;}
+#slick-intro {margin-top: 2em;}
 
 
 /* BLOCKQUOTE STYLE 
 ===========================================*/
 .sl-entry .content blockquote {width: 100%;float: none;margin: 2em 0;border-color: #555;color: #555;font-weight: 400;font-family: "crimson text";padding: 1em 0;}
-#slick-contain .sl-entry .content blockquote p {font-size: .9em;text-align: right;font-family:"Roboto Condensed",sans-serif;margin-top: 10px;}
+#slick-contain .sl-entry .content blockquote p {font-size: 1.1rem;text-align: right;font-family:"Roboto Condensed",sans-serif;margin-top: 20px;}
 
 /* IMAGE STYLE 
 ===========================================*/
@@ -48,7 +49,7 @@
 
 /* TYPE DEPENDENT STYLE 
 ===========================================*/
-#slick-body .sl-entry[type="milestone"] .sl-link a, #slick-body .sl-entry[type="milestone"] blockquote a  {color:#BA8585;}
+#slick-body .sl-entry[type="milestone"] a, #slick-body .sl-entry[type="milestone"] blockquote a  {color:#BA8585;}
 /*#slick-body .sl-entry[type="ed_art"] .sl-link a, #slick-body .sl-entry[type="ed_art"] blockquote a {color:#C184AE;}
 #slick-body .sl-entry[type="ed_report"] .sl-link a, #slick-body .sl-entry[type="ed_report"] blockquote a {color:#83C392;}
 #slick-body .sl-entry[type="ed_proj"] .sl-link a, #slick-body .sl-entry[type="ed_proj"] blockquote a {color:#84BCBC;}
@@ -75,9 +76,11 @@
 @media screen and (min-width:1028px){
 	.sl-lead-img img {width:70%;margin:20px auto;height:auto;}
 	#slick-intro, .sl-storyline, .sl-content {width:50%;}
-
+	.sl-entry {margin:2em 25%;}
 }
 
-@media screen and (min-width:1280px){
+@media screen and (min-width:1366px){
 	.sl-date {width: 60%;}
+	#slick-intro, .sl-storyline, .sl-content {width:40%;}
+	.sl-entry {margin:2em 30%;}
 }
