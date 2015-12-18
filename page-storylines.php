@@ -3,7 +3,7 @@
 	
 /* GRAB FIELDS
 =================================================*/
-$ID = get_the_ID();$title = get_the_title($ID);$featured_img = get_the_post_thumbnail();$perma = get_the_permalink($ID);
+$ID = get_the_ID();$title = get_the_title($ID);$featured_img = get_the_post_thumbnail();$perma = get_the_permalink($ID);$auth = get_the_author($ID);
 $data = get_field('sl_elem', $ID);$img_cap = get_field('img_cap', $id);
 
 /* GRAB YEARS
@@ -35,7 +35,8 @@ print slick_header('Storylines', $ID);
 		// INTRO AREA //
 		print '<div id="slick-intro">';
 			print '<h2>'.$title.'</h2>';
-			if(have_posts()) { while(have_posts()) { the_post();the_content();}}
+			//print '<div class="slick-author"><p></p></div>';
+			if(have_posts()) { while(have_posts()) { the_post();print slick_byline($post->ID, get_the_modified_date('F j, Y'));the_content();}}
 		print '</div>';
 
 		print '<div id="sl-contain">';
@@ -74,12 +75,14 @@ print slick_header('Storylines', $ID);
 				// STORYLINES AREA //
 
 					// THE YEARS //
-					for ($i = $year_len ; $i > -1 ; $i--){
+					//for ($i = $year_len ; $i > -1 ; $i--){
+					for ($i=0 ; $i < $year_len + 1 ; $i++){
 						print '<div class="sl-year">'.$years[$i].'</div>';
 						print '<div class="sl-year-contain">';
 
 							// THE ELEMENTS //	
-							for ($j= (sizeof($data) -1) ; $j > -1 ; $j--){
+							//for ($j= (sizeof($data) -1) ; $j > -1 ; $j--){
+							for ($j=0 ; $j < sizeof($data); $j++){
 								if ($data[$j]['year'] == $years[$i]){
 
 									// TYPE OF ELEMENT //

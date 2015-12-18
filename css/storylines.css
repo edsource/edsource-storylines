@@ -12,15 +12,18 @@
 
 /* HEADER STYLE 
 ===========================================*/
-#slick-header>div:nth-of-type(2) a {color:#83C392;}
-#slick-header>div:nth-of-type(2) a:hover {color:#618A6B;}
+#slick-header>div:nth-of-type(2) a, #slick-contain .slick-author a {color:#83C392;}
+#slick-header>div:nth-of-type(2) a:hover, #slick-contain .slick-author a:hover {color:#618A6B;}
 #slick-header .slick-social-hed {top:-50px;}
+#slick-header .slick-social-hed a:hover {color:#83C392;}
+
 
 /* BODY STYLE 
 ===========================================*/
 #slick-body {width:100%;}
 	#slick-body a {color:#4B9A5D;}
 	#slick-body h3 {font-size:1.5rem;font-weight:700;}
+	#slick-body h2 {text-align:left;}
 #slick-intro {margin-top: 2em;}
 
 
