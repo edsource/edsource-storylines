@@ -46,7 +46,7 @@ print slick_header('Storylines', $ID);
 
 				// GRAB CHILDREN
 				$query = new WP_Query();
-				$args = $query->query(array('post_type' => 'page', 'post_status'=>'draft', 'order'=>'DESC'));
+				$args = $query->query(array('post_type' => 'page', 'post_status'=>'published', 'order'=>'DESC'));
 				$children = get_page_children(89893, $args);
 
 				//var_dump($children);
@@ -134,7 +134,7 @@ print slick_header('Storylines', $ID);
 											}
 										print '</div>';
 										print '<div class="content">';
-											if ($data[$j]['type'] != 'milestone'){print '<h3>'.$data[$j]['title'].'</h3>';}
+											if ($data[$j]['type'] != 'milestone'){print '<a href="'.$data[$j]['url'].'"><h3>'.$data[$j]['title'].'</a></h3>';}
 
 											// CHECK TOP EMBED //
 											if ($data[$j]['bce']){print $data[$j]['bce'];}
