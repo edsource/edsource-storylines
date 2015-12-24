@@ -43,7 +43,7 @@
 
 /* ENTRY STYLE 
 ===========================================*/
-.sl-entry {width: 50%;margin: 2em 25%;overflow:hidden;padding-bottom: 4em;}
+.sl-entry {width: 98%;margin: 2em 1%;overflow:hidden;padding-bottom: 4em;}
 	.sl-entry .meta {display:none;min-height:60px;}
 		.sl-entry .meta img {max-width: 60px;}
 	.sl-entry .content {margin:2em auto 0 auto;width:96%;}
@@ -72,6 +72,7 @@
 ===========================================*/
 
 @media screen and (min-width:768px){
+	.sl-entry {width:50%;margin:2em 25%;}
 	.sl-entry .meta {display:none;}
 	.sl-entry .content {width:100%;}
 }

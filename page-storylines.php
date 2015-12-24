@@ -36,7 +36,10 @@ print slick_header('Storylines', $ID);
 		print '<div id="slick-intro">';
 			print '<h2>'.$title.'</h2>';
 			//print '<div class="slick-author"><p></p></div>';
-			if(have_posts()) { while(have_posts()) { the_post();print slick_byline($post->ID, get_the_modified_date('F j, Y'));the_content();}}
+			if(have_posts()) { while(have_posts()) { the_post();print slick_byline($post->ID, get_the_modified_date('F j, Y'));
+				print '<p><em>The EdSource Today editorial team has selected several significant education issues to present in timelines that will be regularly updated. The timelines allow you to quickly get up to speed on EdSource’s coverage of these notable issues. Scroll down the page to get a snapshot of the key events that occurred. Click on the headlines to read the articles that explain why, when, and how the events evolved, as well as the most recent developments.</em></p>';
+				the_content();}
+			}
 		print '</div>';
 
 		print '<div id="sl-contain">';
